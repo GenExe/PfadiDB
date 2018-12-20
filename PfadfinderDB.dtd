@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!ELEMENT Pfadfinder (person*, Aufgabe*, resource*, pfadfinderleiter*)>
+<!ELEMENT PfadfinderDB (Party*, Task*, Resource*, Invitation*, Event*)>
 
-<!ELEMENT resource (Termin)*>
-<!ATTLIST resource
-Bezeichnung    ID #REQUIRED
-Information    CDATA #REQUIRED>
+<!ELEMENT Resource>
+<!ATTLIST Resource
+id		ID #REQUIRED
+name    CDATA #REQUIRED
+info    CDATA #IMPLIED>
 
-<!ELEMENT Einladung (Termin)*>
-<!ATTLIST Einladung
-Einladung_ID   ID #REQUIRED
-Angennomen    CDATA #REQUIRED>
+<!ELEMENT Party>
+<!ATTLIST Party 
+id		ID #REQUIRED
+name	CDATA #REQUIRED>
 
-<!ELEMENT Einladung (Person)*>
-<!ATTLIST resource
-Einladung_ID   ID #REQUIRED
-Angennomen    CDATA #REQUIRED>
+<!ELEMENT Invitation (Party)>
+<!ATTLIST Resource
+id   		ID #REQUIRED
+accepted    ("true" | "false" | "unknown") "unknown">
 
-<!ELEMENT Aufgabe (Person)*>
-<!ATTLIST resource
-Aufgabe_ID    ID #REQUIRED
-Fälligkeitsdatum  CDATA #REQUIRED
-Bezeichnung    CDATA #REQUIRED
-Informationen   CDATA #REQUIRED>
+<!ELEMENT Task (Party)*>
+<!ATTLIST Resource
+id    ID 	#REQUIRED
+duedate  	CDATA #REQUIRED
+name    	CDATA #REQUIRED
+info   		CDATA #REQUIRED>
 
-<!ELEMENT Termin (resourcen)*>
-<!ATTLIST Einladung
-Termin_ID    ID #REQUIRED
-Information    CDATA #REQUIRED
-Enddatum    CDATA #REQUIRED
-Bezeichnung    CDATA #REQUIRED
-Informationen   CDATA #REQUIRED>
+<!ELEMENT Event (Resource)*>
+<!ATTLIST Invitation
+id    			ID #REQUIRED
+info    		CDATA #IMPLIED
+startdate		CDATA #REQUIRED
+enddate    		CDATA #REQUIRED
+name    		CDATA #REQUIRED>
 
