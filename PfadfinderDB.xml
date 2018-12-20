@@ -7,10 +7,41 @@
 		name="Ferrino 1"
 		info="8-Mann-Zelt">
 	</Resource>
+	<Resource
+		id="res-2"
+		name="Ferrino 2"
+		info="8-Mann-Zelt">
+	</Resource>
+	<Resource
+		id="res-3"
+		name="Iglu"
+		info="2-Mann-Zelt">
+	</Resource>
+	<Resource
+		id="res-4"
+		name="Iglu"
+		info="2-Mann-Zelt">
+	</Resource>
 	
 	<Party
 		id="par-1"
-		name="Lukas Zimmermann">
+		name="Lukas">
+	</Party>
+	<Party
+		id="par-2"
+		name="Stephan">
+	</Party>
+	<Party
+		id="par-3"
+		name="Jenny">
+	</Party>
+	<Party
+		id="par-4"
+		name="Marco">
+	</Party>
+	<Party
+		id="par-5"
+		name="Tami">
 	</Party>
 	
 	<Invitation
@@ -18,15 +49,83 @@
 		accepted="true">
 		<for party-id="par-1"/>
 	</Invitation>
+	<Invitation
+		id="inv-2"
+		accepted="true">
+		<for party-id="par-2"/>
+	</Invitation>
+	<Invitation
+		id="inv-3"
+		accepted="true">
+		<for party-id="par-3"/>
+	</Invitation>
+	<Invitation
+		id="inv-4"
+		accepted="false">
+		<for party-id="par-4"/>
+	</Invitation>
+	<Invitation
+		id="inv-5"
+		accepted="true">
+		<for party-id="par-5"/>
+	</Invitation>
+	<Invitation
+		id="inv-6"
+		accepted="false">
+		<for party-id="par-2"/>
+	</Invitation>
+	<Invitation
+		id="inv-7"
+		accepted="true">
+		<for party-id="par-5"/>
+	</Invitation>
+	<Invitation
+		id="inv-8"
+		accepted="false">
+		<for party-id="par-3"/>
+	</Invitation>
+	<Invitation
+		id="inv-9"
+		accepted="true">
+		<for party-id="par-1"/>
+	</Invitation>
+	<Invitation
+		id="inv-10"
+		accepted="false">
+		<for party-id="par-1"/>
+	</Invitation>
 	
 	<Event
-		id="eve-1"
+		id="eve-2"
+		startdate="12.01.2019"
+		enddate="12.01.2019"
+		name="Heimstunde">
+		<invited invitation-id="inv-8"
+			invitation-id="inv-9"/>
+	</Event>
+	<Event
+		id="eve-2"
+		startdate="26.01.2019"
+		enddate="26.01.2019"
+		name="Heimstunde">
+		<uses resource-id="res-3"
+			resource-id="res-4"/>
+		<invited invitation-id="inv-6"
+			invitation-id="inv-7"
+			invitation-id="inv-10"/>
+	</Event>
+	<Event
+		id="eve-3"
 		startdate="22.02.2019"
 		enddate="24.02.2019"
 		name="Winter Wochenendlager"
-		info="10-Zelten">
+		info="alljährliches Wochenendlager bei Schnee im Pfadfinderheim">
 		<uses resource-id="res-1"/>
-		<invited invitation-id="inv-1"/>
+		<invited invitation-id="inv-1"
+			invitation-id="inv-2"
+			invitation-id="inv-3"
+			invitation-id="inv-4"
+			invitation-id="inv-5"/>
 	</Event>
 	
 	<Task
