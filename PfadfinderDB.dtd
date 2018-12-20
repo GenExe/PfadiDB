@@ -15,7 +15,7 @@ name	CDATA #REQUIRED>
 <!ELEMENT Invitation (Party)>
 <!ATTLIST Resource
 id   		ID #REQUIRED
-accepted    ("true" | "false" | "unknown") "unknown">
+accepted    (true | false | unknown) unknown>
 
 <!ELEMENT Task (Party)*>
 <!ATTLIST Resource
