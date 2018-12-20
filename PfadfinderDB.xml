@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE PfadfinderDB SYSTEM "PfadfinderDB.dtd">
+
+<PfadfinderDB>
+	<Resource
+		id="res-1"
+		name="Ferrino 1"
+		info="8-Mann-Zelt">
+	</Resource>
+	
+	<Party
+		id="par-1"
+		name="Lukas Zimmermann">
+	</Party>
+	
+	<Invitation
+		id="inv-1"
+		accepted="true">
+		<for party-id="par-1"/>
+	</Invitation>
+	
+	<Event
+		id="eve-1"
+		startdate="22.02.2019"
+		enddate="24.02.2019"
+		name="Winter Wochenendlager"
+		info="10-Zelten">
+		<uses resource-id="res-1"/>
+		<invited invitation-id="inv-1"/>
+	</Event>
+	
+	<Task
+		id="tas-1"
+		duedate="31.01.2019"
+		name="Heimreinigung"
+		info="Komplettreinigung des Pfadfinderheims">
+		<assigned par-id="par-1"/>
+	</Task>
+	
+</PfadfinderDB>

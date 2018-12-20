@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT Pfadfinder (person*, Aufgabe*, resource*, pfadfinderleiter*)>
+
+<!ELEMENT resource (Termin)*>
+<!ATTLIST resource
+Bezeichnung    ID #REQUIRED
+Information    CDATA #REQUIRED>
+
+<!ELEMENT Einladung (Termin)*>
+<!ATTLIST Einladung
+Einladung_ID   ID #REQUIRED
+Angennomen    CDATA #REQUIRED>
+
+<!ELEMENT Einladung (Person)*>
+<!ATTLIST resource
+Einladung_ID   ID #REQUIRED
+Angennomen    CDATA #REQUIRED>
+
+<!ELEMENT Aufgabe (Person)*>
+<!ATTLIST resource
+Aufgabe_ID    ID #REQUIRED
+Fälligkeitsdatum  CDATA #REQUIRED
+Bezeichnung    CDATA #REQUIRED
+Informationen   CDATA #REQUIRED>
+
+<!ELEMENT Termin (resourcen)*>
+<!ATTLIST Einladung
+Termin_ID    ID #REQUIRED
+Information    CDATA #REQUIRED
+Enddatum    CDATA #REQUIRED
+Bezeichnung    CDATA #REQUIRED
+Informationen   CDATA #REQUIRED>
+
