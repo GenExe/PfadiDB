@@ -15,8 +15,7 @@ name		CDATA #REQUIRED>
 <!ELEMENT Invitation (for)>
 <!ATTLIST Invitation
 id  		ID #REQUIRED
-accepted	CDATA "unknown">
-<!--accepted	("true" | "false" | "unknown") "unknownw" -->
+accepted	(true | false | unknown) "unknown">
 
 <!ELEMENT for EMPTY>
 <!ATTLIST for
