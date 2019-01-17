@@ -16,31 +16,23 @@
 			<h2>Table of Contents</h2>
 			<h3>Resources</h3>
 			<ol>
-				<xsl:apply-templates select="Resource" mode="table-of-contents">
+				<xsl:apply-templates select="Resource" mode="table-of-contents"/>
 			</ol>
 			<h3>Leaders</h3>
 			<ol>
-				<xsl:for-each select="Leader">
-					<li><xsl:value-of select="@name"/></li>
-				</xsl:for-each>
+				<xsl:apply-templates select="Leader" mode="table-of-contents"/>
 			</ol>
 			<h3>Invitations</h3>
 			<ol>
-				<xsl:for-each select="Invitation">
-					<li><xsl:value-of select="@id"/></li>
-				</xsl:for-each>
+				<xsl:apply-templates select="Invitation" mode="table-of-contents"/>
 			</ol>
 			<h3>Events</h3>
 			<ol>
-				<xsl:for-each select="Event">
-					<li><xsl:value-of select="@name"/></li>
-				</xsl:for-each>
+				<xsl:apply-templates select="Event" mode="table-of-contents"/>
 			</ol>
 			<h3>Tasks</h3>
 			<ol>
-				<xsl:for-each select="Task">
-					<li><xsl:value-of select="@name"/></li>
-				</xsl:for-each>
+				<xsl:apply-templates select="Task" mode="table-of-contents"/>
 			</ol>
 			
 			<xsl:apply-templates select="Resource" mode="detail"/>
@@ -49,12 +41,40 @@
 			<xsl:apply-templates select="Event" mode="detail"/>
 			<xsl:apply-templates select="Task" mode="detail"/>
 			
+			<h3>Index</h3>
+			<ol>
+				<xsl:apply-templates select="Resource|Leader|Invitation|Event|Task" mode="index">
+					<xsl:sort select="@name"/>
+				</xsl:apply-templates>
+			</ol>
+			
+			
 		</body>
 	</html>
 </xsl:template>
 
+<xsl:template match="Resource" mode="table-of-contents">
+	<li><a href="#{@id}"><xsl:value-of select="@name"/></a></li>
+</xsl:template>
+
+<xsl:template match="Leader" mode="table-of-contents">
+	<li><a href="#{@id}"><xsl:value-of select="@name"/></a></li>
+</xsl:template>
+
+<xsl:template match="Invitation" mode="table-of-contents">
+	<li><a href="#{@id}"><xsl:value-of select="@id"/></a></li>
+</xsl:template>
+
+<xsl:template match="Event" mode="table-of-contents">
+	<li><a href="#{@id}"><xsl:value-of select="@name"/></a></li>
+</xsl:template>
+
+<xsl:template match="Task" mode="table-of-contents">
+	<li><a href="#{@id}"><xsl:value-of select="@name"/></a></li>
+</xsl:template>
+
 <xsl:template match="Resource" mode="detail">
-<h3><xsl:value-of select="@name"/></h3>
+<h3><a id="{@id}"></a><xsl:value-of select="@name"/></h3>
 <p>
 	<b>ID: </b><xsl:value-of select="@id"/><br/>
 	<b>Info: </b><xsl:value-of select="@info"/>
@@ -62,14 +82,14 @@
 </xsl:template>
 
 <xsl:template match="Leader" mode="detail">
-<h3><xsl:value-of select="@name"/></h3>
+<h3><a id="{@id}"></a><xsl:value-of select="@name"/></h3>
 <p>
 	<b>ID: </b><xsl:value-of select="@id"/>
 </p>
 </xsl:template>
 
 <xsl:template match="Invitation" mode="detail">
-<h3><xsl:value-of select="@id"/></h3>
+<h3><a id="{@id}"></a><xsl:value-of select="@id"/></h3>
 <p>
 	<b>Invitation for: </b>
 	<xsl:for-each select="for">
@@ -80,7 +100,7 @@
 </xsl:template>
 
 <xsl:template match="Event" mode="detail">
-<h3><xsl:value-of select="@name"/></h3>
+<h3><a id="{@id}"></a><xsl:value-of select="@name"/></h3>
 <p>
 	<b>ID: </b><xsl:value-of select="@id"/><br/>
 	<b>Info: </b><xsl:value-of select="@info"/><br/>
@@ -98,7 +118,7 @@
 </xsl:template>
 
 <xsl:template match="Task" mode="detail">
-<h3><xsl:value-of select="@name"/></h3>
+<h3><a id="{@id}"></a><xsl:value-of select="@name"/></h3>
 <p>
 	<b>ID: </b><xsl:value-of select="@id"/><br/>
 	<b>Info: </b><xsl:value-of select="@info"/><br/>
@@ -109,4 +129,25 @@
 	</xsl:for-each>
 </p>
 </xsl:template>
+
+<xsl:template match="Resource" mode="index">
+	<li><a href="#{@id}"><xsl:value-of select="@name"/></a></li>
+</xsl:template>
+
+<xsl:template match="Leader" mode="index">
+	<li><a href="#{@id}"><xsl:value-of select="@name"/></a></li>
+</xsl:template>
+
+<xsl:template match="Invitation" mode="index">
+	<li><a href="#{@id}"><xsl:value-of select="@id"/></a></li>
+</xsl:template>
+
+<xsl:template match="Event" mode="index">
+	<li><a href="#{@id}"><xsl:value-of select="@name"/></a></li>
+</xsl:template>
+
+<xsl:template match="Task" mode="index">
+	<li><a href="#{@id}"><xsl:value-of select="@name"/></a></li>
+</xsl:template>
+
 </xsl:stylesheet>

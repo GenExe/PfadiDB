@@ -11,19 +11,19 @@ Die ID beginnt mit den ersten 3 Buchstaben des Objekts gefolgt von einem Minus u
 		info="Pfadfinderheim Nüziders, Mitteleule 32"/>
 	<Resource
 		id="res-2"
-		name="Ferrino 1"
+		name="Ferrino-1"
 		info="8-Mann-Zelt"/>
 	<Resource
 		id="res-3"
-		name="Ferrino 2"
+		name="Ferrino-2"
 		info="8-Mann-Zelt"/>
 	<Resource
 		id="res-4"
-		name="Iglu"
+		name="Iglu-1"
 		info="2-Mann-Zelt"/>
 	<Resource
 		id="res-5"
-		name="Iglu"
+		name="Iglu-2"
 		info="2-Mann-Zelt"/>
 	
 	<Leader
