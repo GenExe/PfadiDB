@@ -15,6 +15,7 @@ name		CDATA #REQUIRED>
 <!ELEMENT Invitation (for)>
 <!ATTLIST Invitation
 id  		ID #REQUIRED
+name		CDATA #REQUIRED
 accepted	(true | false | unknown) "unknown">
 
 <!ELEMENT for EMPTY>
