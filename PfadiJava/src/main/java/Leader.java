@@ -4,7 +4,8 @@ public class Leader {
     private String id;
     private String name;
     private Set<Invitation> invitationSet;
-    private Set<ScoutGroup> scoutGroupSet;
+    private Set<Group> groupSet;
+    private Set<Task> taskSet;
 
     public Leader() {
     }
@@ -33,11 +34,19 @@ public class Leader {
         this.invitationSet = invitationSet;
     }
 
-    public Set<ScoutGroup> getScoutGroupSet() {
-        return scoutGroupSet;
+    public Set<Group> getGroupSet() {
+        return groupSet;
     }
 
-    public void setScoutGroupSet(Set<ScoutGroup> scoutGroupSet) {
-        this.scoutGroupSet = scoutGroupSet;
+    public void setGroupSet(Set<Group> groupSet) {
+        this.groupSet = groupSet;
+    }
+
+    public Set<Task> getTaskSet() {
+        return taskSet;
+    }
+
+    public void setTaskSet(Set<Task> taskSet) {
+        this.taskSet = taskSet;
     }
 }

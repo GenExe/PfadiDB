@@ -1,7 +1,7 @@
 import java.sql.Date;
 import java.util.Set;
 
-public class ScoutEvent {
+public class Event {
     private String id;
     private String name;
     private String info;
@@ -10,7 +10,7 @@ public class ScoutEvent {
     private Set<Resource> resourceSet;
     private Set<Invitation> invitationSet;
 
-    public ScoutEvent() {
+    public Event() {
     }
 
     public String getId() {

@@ -1,7 +1,7 @@
 public class Invitation {
     private String invitationId;
     private InvResponse response;
-    private ScoutEvent event;
+    private Event event;
     private Leader leader;
 
     public Invitation() {
@@ -23,11 +23,11 @@ public class Invitation {
         this.response = response;
     }
 
-    public ScoutEvent getEvent() {
+    public Event getEvent() {
         return event;
     }
 
-    public void setEvent(ScoutEvent event) {
+    public void setEvent(Event event) {
         this.event = event;
     }
 

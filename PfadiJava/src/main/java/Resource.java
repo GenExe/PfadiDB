@@ -4,7 +4,7 @@ public class Resource {
     private String resId;
     private String name;
     private String info;
-    private Set<ScoutEvent> eventSet;
+    private Set<Event> eventSet;
 
     public Resource() {
     }
@@ -33,11 +33,11 @@ public class Resource {
         this.info = info;
     }
 
-    public Set<ScoutEvent> getEventSet() {
+    public Set<Event> getEventSet() {
         return eventSet;
     }
 
-    public void setEventSet(Set<ScoutEvent> eventSet) {
+    public void setEventSet(Set<Event> eventSet) {
         this.eventSet = eventSet;
     }
 }

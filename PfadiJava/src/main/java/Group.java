@@ -1,12 +1,12 @@
 import java.util.Set;
 
-public class ScoutGroup {
+public class Group {
     private String id;
     private String name;
-    private int ScoutsNumber;
+    private int memberCount;
     private Set<Leader> leaderSet;
 
-    public ScoutGroup() {
+    public Group() {
     }
 
     public String getId() {
@@ -25,12 +25,12 @@ public class ScoutGroup {
         this.name = name;
     }
 
-    public int getScoutsNumber() {
-        return ScoutsNumber;
+    public int getMemberCount() {
+        return memberCount;
     }
 
-    public void setScoutsNumber(int scoutsNumber) {
-        ScoutsNumber = scoutsNumber;
+    public void setMemberCount(int memberCount) {
+        this.memberCount = memberCount;
     }
 
     public Set<Leader> getLeaderSet() {
