@@ -1,17 +1,36 @@
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
+import org.hibernate.service.ServiceRegistry;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Welcome to PfadiDB Ver. 0.1.5");
-        System.out.println("Enter username");
-        int check = Login.login(scan.nextLine());
-        while (check != 0){
-            System.out.println("Wrong username!");
-            System.out.println("Enter username");
-            check = Login.login(scan.nextLine());
-        }
-        System.out.println("Logged in as " + Login.getUser().getName());
+        SessionFactory factory = null;
+        Configuration configuration = new Configuration();
+        configuration.configure("/hibernate.cfg.xml");
+        configuration.addAnnotatedClass(Event.class);
+        configuration.addAnnotatedClass(Group.class);
+        configuration.addAnnotatedClass(Invitation.class);
+        configuration.addAnnotatedClass(Leader.class);
+        configuration.addAnnotatedClass(Resource.class);
+        configuration.addAnnotatedClass(Task.class);
+        ServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+        factory = configuration.buildSessionFactory(registry);
+//        System.out.println("Enter username");
+//        int check = Login.login(scan.nextLine());
+//        while (check != 0){
+//            System.out.println("Wrong username!");
+//            System.out.println("Enter username");
+//            check = Login.login(scan.nextLine());
+//        }
+//        System.out.println("Logged in as " + Login.getUser().getName());
         boolean running = true;
         String input;
         while(running) {
@@ -31,7 +50,11 @@ public class Main {
                 case "my groups":
                     //todo: list groups for the user
                 case "all events":
-                    //todo: list all events
+                    Session session = factory.openSession();
+                    Query query = session.createNativeQuery("SELECT * FROM event where name = ?1");
+                    query.setParameter(1, "Heimstunde");
+                    List list = query.list();
+
                 case "all resources":
                     //todo: list all resources
                 case "all leaders":
