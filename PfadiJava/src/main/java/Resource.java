@@ -1,5 +1,9 @@
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@SequenceGenerator(name="id")
+@Table(name="resource")
 public class Resource {
     private String resId;
     private String name;
@@ -9,6 +13,9 @@ public class Resource {
     public Resource() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     public String getResId() {
         return resId;
     }
@@ -17,6 +24,7 @@ public class Resource {
         this.resId = resId;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -25,6 +33,7 @@ public class Resource {
         this.name = name;
     }
 
+    @Column(name = "info")
     public String getInfo() {
         return info;
     }
@@ -32,6 +41,8 @@ public class Resource {
     public void setInfo(String info) {
         this.info = info;
     }
+
+    @ManyToMany(mappedBy = "resourceSet")
 
     public Set<Event> getEventSet() {
         return eventSet;

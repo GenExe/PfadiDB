@@ -1,12 +1,22 @@
+import javax.persistence.*;
+
+
+@Entity
+@SequenceGenerator(name="id")
+@Table(name="invitation")
 public class Invitation {
     private String invitationId;
     private InvResponse response;
     private Event event;
     private Leader leader;
 
+
     public Invitation() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     public String getInvitationId() {
         return invitationId;
     }
@@ -15,6 +25,7 @@ public class Invitation {
         this.invitationId = invitationId;
     }
 
+    @Column(name = "accepted")
     public InvResponse getResponse() {
         return response;
     }
@@ -23,6 +34,8 @@ public class Invitation {
         this.response = response;
     }
 
+    @ManyToOne
+    @JoinColumn(name="eventid", nullable=false)
     public Event getEvent() {
         return event;
     }
@@ -31,6 +44,8 @@ public class Invitation {
         this.event = event;
     }
 
+    @ManyToOne
+    @JoinColumn(name="leaderid", nullable=false)
     public Leader getLeader() {
         return leader;
     }

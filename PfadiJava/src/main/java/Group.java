@@ -1,5 +1,9 @@
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@SequenceGenerator(name="id")
+@Table(name="group")
 public class Group {
     private String id;
     private String name;
@@ -9,6 +13,9 @@ public class Group {
     public Group() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     public String getId() {
         return id;
     }
@@ -17,6 +24,7 @@ public class Group {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -25,6 +33,7 @@ public class Group {
         this.name = name;
     }
 
+    @Column(name = "membercount")
     public int getMemberCount() {
         return memberCount;
     }
@@ -33,6 +42,7 @@ public class Group {
         this.memberCount = memberCount;
     }
 
+    @ManyToMany(mappedBy = "groupSet")
     public Set<Leader> getLeaderSet() {
         return leaderSet;
     }

@@ -1,7 +1,11 @@
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.Set;
 
+@Entity
+@SequenceGenerator(name="id")
+@Table(name="task")
 public class Task implements Serializable {
     private String id;
     private String name;
@@ -12,6 +16,9 @@ public class Task implements Serializable {
     public Task() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     public String getId() {
         return id;
     }
@@ -20,6 +27,7 @@ public class Task implements Serializable {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -28,6 +36,7 @@ public class Task implements Serializable {
         this.name = name;
     }
 
+    @Column(name = "duedate")
     public Date getDueDate() {
         return dueDate;
     }
@@ -36,6 +45,7 @@ public class Task implements Serializable {
         this.dueDate = dueDate;
     }
 
+    @Column(name = "info")
     public String getInfo() {
         return info;
     }
@@ -44,6 +54,7 @@ public class Task implements Serializable {
         this.info = info;
     }
 
+    @ManyToMany(mappedBy = "taskSet")
     public Set<Leader> getLeaderSet() {
         return leaderSet;
     }

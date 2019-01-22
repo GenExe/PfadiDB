@@ -1,5 +1,9 @@
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@SequenceGenerator(name="id")
+@Table(name="leader")
 public class Leader {
     private String id;
     private String name;
@@ -10,6 +14,9 @@ public class Leader {
     public Leader() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     public String getId() {
         return id;
     }
@@ -18,6 +25,7 @@ public class Leader {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -26,6 +34,7 @@ public class Leader {
         this.name = name;
     }
 
+    @OneToMany(mappedBy = "invitation")
     public Set<Invitation> getInvitationSet() {
         return invitationSet;
     }
@@ -34,6 +43,12 @@ public class Leader {
         this.invitationSet = invitationSet;
     }
 
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "ispartof",
+            joinColumns = { @JoinColumn(name = "leaderid") },
+            inverseJoinColumns = { @JoinColumn(name = "groupid") }
+    )
     public Set<Group> getGroupSet() {
         return groupSet;
     }
@@ -42,6 +57,12 @@ public class Leader {
         this.groupSet = groupSet;
     }
 
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "assigned",
+            joinColumns = { @JoinColumn(name = "leaderid") },
+            inverseJoinColumns = { @JoinColumn(name = "taskid") }
+    )
     public Set<Task> getTaskSet() {
         return taskSet;
     }

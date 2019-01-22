@@ -1,6 +1,10 @@
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.Set;
 
+@Entity
+@SequenceGenerator(name="id")
+@Table(name="event")
 public class Event {
     private String id;
     private String name;
@@ -10,9 +14,13 @@ public class Event {
     private Set<Resource> resourceSet;
     private Set<Invitation> invitationSet;
 
+
     public Event() {
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     public String getId() {
         return id;
     }
@@ -21,6 +29,7 @@ public class Event {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -29,6 +38,7 @@ public class Event {
         this.name = name;
     }
 
+    @Column(name = "info")
     public String getInfo() {
         return info;
     }
@@ -37,6 +47,7 @@ public class Event {
         this.info = info;
     }
 
+    @Column(name = "startdate")
     public Date getStartdate() {
         return startdate;
     }
@@ -45,6 +56,7 @@ public class Event {
         this.startdate = startdate;
     }
 
+    @Column(name = "enddate")
     public Date getEnddate() {
         return enddate;
     }
@@ -53,6 +65,12 @@ public class Event {
         this.enddate = enddate;
     }
 
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "uses",
+            joinColumns = { @JoinColumn(name = "eventid") },
+            inverseJoinColumns = { @JoinColumn(name = "resourceid") }
+    )
     public Set<Resource> getResourceSet() {
         return resourceSet;
     }
@@ -61,6 +79,7 @@ public class Event {
         this.resourceSet = resourceSet;
     }
 
+    @OneToMany(mappedBy = "invitation")
     public Set<Invitation> getInvitationSet() {
         return invitationSet;
     }
