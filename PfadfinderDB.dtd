@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!ELEMENT PfadfinderDB (Resource*, Leader*, Invitation*, Event*, Task*)>
+<!ELEMENT PfadfinderDB (Resource*, Leader*, Invitation*, Event*, Task*, Group*)>
 
 <!ELEMENT Resource EMPTY>
 <!ATTLIST Resource
@@ -48,3 +48,13 @@ info   		CDATA #IMPLIED>
 <!ELEMENT assigned EMPTY>
 <!ATTLIST assigned
 leader-id	IDREF #REQUIRED>
+
+<!ELEMENT Group (member)*>
+<!ATTLIST Group
+id			ID	#REQUIRED
+name		CDATA	#REQUIRED
+membercount	CDATA	#IMPLIED>
+
+<!ELEMENT member EMPTY>
+<!ATTLIST member
+leader-id	IDREF	#REQUIRED>

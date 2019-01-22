@@ -142,5 +142,21 @@
 		<assigned leader-id="lea-4" />
 		<assigned leader-id="lea-5" />
 	</Task>
+	
+	<Group id="gro-1" name="Alle" membercount="5">
+		<member leader-id="lea-1"/>
+		<member leader-id="lea-2"/>
+		<member leader-id="lea-3"/>
+		<member leader-id="lea-4"/>
+		<member leader-id="lea-5"/>
+	</Group>
+	<Group id="gro-2" name="WiWö">
+		<member leader-id="lea-2"/>
+	</Group>
+	<Group id="gro-3" name="GuSp">
+		<member leader-id="lea-1"/>
+		<member leader-id="lea-3"/>
+		<member leader-id="lea-5"/>
+	</Group>
 
 </PfadfinderDB>
