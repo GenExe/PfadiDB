@@ -79,8 +79,8 @@
     <schema id="17" parent="3" name="public">
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
-      <IntrospectionTimestamp>2019-01-19.16:28:26.351</IntrospectionTimestamp>
-      <IntrospectionStateNumber>735</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2019-01-22.16:54:14.030</IntrospectionTimestamp>
+      <IntrospectionStateNumber>743</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -145,7 +145,7 @@ true</Labels>
     </table>
     <table id="27" parent="17" name="groups">
       <ObjectId>16579</ObjectId>
-      <StateNumber>734</StateNumber>
+      <StateNumber>743</StateNumber>
     </table>
     <table id="28" parent="17" name="invitation">
       <ObjectId>16601</ObjectId>
@@ -287,60 +287,66 @@ startdate</ColNames>
       <StateNumber>729</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="51" parent="27" name="groups_pkey">
+    <column id="51" parent="27" name="name">
+      <Position>3</Position>
+      <DataType>varchar(64)|0s</DataType>
+      <StateNumber>743</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="52" parent="27" name="groups_pkey">
       <ObjectId>16583</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="52" parent="27" name="groups_pkey">
+    <key id="53" parent="27" name="groups_pkey">
       <ObjectId>16584</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>groups_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <check id="53" parent="27" name="groups_membercount_check">
+    <check id="54" parent="27" name="groups_membercount_check">
       <ObjectId>16582</ObjectId>
       <ColNames>membercount</ColNames>
       <Predicate>membercount &gt;= 1</Predicate>
     </check>
-    <column id="54" parent="28" name="id">
+    <column id="55" parent="28" name="id">
       <Position>1</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>732</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="55" parent="28" name="accepted">
+    <column id="56" parent="28" name="accepted">
       <Position>2</Position>
       <DataType>accept|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>732</StateNumber>
       <TypeId>16595</TypeId>
     </column>
-    <column id="56" parent="28" name="eventid">
+    <column id="57" parent="28" name="eventid">
       <Position>3</Position>
       <DataType>varchar(32)|0s</DataType>
       <StateNumber>732</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="57" parent="28" name="leaderid">
+    <column id="58" parent="28" name="leaderid">
       <Position>4</Position>
       <DataType>varchar(32)|0s</DataType>
       <StateNumber>732</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="58" parent="28" name="invitation_pkey">
+    <index id="59" parent="28" name="invitation_pkey">
       <ObjectId>16604</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="59" parent="28" name="invitation_pkey">
+    <key id="60" parent="28" name="invitation_pkey">
       <ObjectId>16605</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>invitation_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="60" parent="28" name="invitation_eventid_fkey">
+    <foreign-key id="61" parent="28" name="invitation_eventid_fkey">
       <ObjectId>16606</ObjectId>
       <ColNames>eventid</ColNames>
       <RefTableId>16564</RefTableId>
@@ -350,7 +356,7 @@ startdate</ColNames>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="61" parent="28" name="invitation_leaderid_fkey">
+    <foreign-key id="62" parent="28" name="invitation_leaderid_fkey">
       <ObjectId>16611</ObjectId>
       <ColNames>leaderid</ColNames>
       <RefTableId>16574</RefTableId>
@@ -360,34 +366,34 @@ startdate</ColNames>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="62" parent="29" name="leaderid">
+    <column id="63" parent="29" name="leaderid">
       <Position>1</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>734</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="63" parent="29" name="groupid">
+    <column id="64" parent="29" name="groupid">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>734</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="64" parent="29" name="ispartof_pkey">
+    <index id="65" parent="29" name="ispartof_pkey">
       <ObjectId>16634</ObjectId>
       <ColNames>leaderid
 groupid</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="65" parent="29" name="ispartof_pkey">
+    <key id="66" parent="29" name="ispartof_pkey">
       <ObjectId>16635</ObjectId>
       <ColNames>leaderid
 groupid</ColNames>
       <UnderlyingIndexName>ispartof_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="66" parent="29" name="ispartof_leaderid_fkey">
+    <foreign-key id="67" parent="29" name="ispartof_leaderid_fkey">
       <ObjectId>16636</ObjectId>
       <ColNames>leaderid</ColNames>
       <RefTableId>16574</RefTableId>
@@ -397,7 +403,7 @@ groupid</ColNames>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="67" parent="29" name="ispartof_groupid_fkey">
+    <foreign-key id="68" parent="29" name="ispartof_groupid_fkey">
       <ObjectId>16641</ObjectId>
       <ColNames>groupid</ColNames>
       <RefTableId>16579</RefTableId>
@@ -407,132 +413,132 @@ groupid</ColNames>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="68" parent="30" name="id">
+    <column id="69" parent="30" name="id">
       <Position>1</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>728</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="69" parent="30" name="name">
+    <column id="70" parent="30" name="name">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>728</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="70" parent="30" name="leader_pkey">
+    <index id="71" parent="30" name="leader_pkey">
       <ObjectId>16577</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="71" parent="30" name="leader_pkey">
+    <key id="72" parent="30" name="leader_pkey">
       <ObjectId>16578</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>leader_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="72" parent="31" name="id">
+    <column id="73" parent="31" name="id">
       <Position>1</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>726</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="73" parent="31" name="name">
+    <column id="74" parent="31" name="name">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>726</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="74" parent="31" name="info">
+    <column id="75" parent="31" name="info">
       <Position>3</Position>
       <DataType>text|0s</DataType>
       <StateNumber>726</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <index id="75" parent="31" name="resource_pkey">
+    <index id="76" parent="31" name="resource_pkey">
       <ObjectId>16562</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="76" parent="31" name="resource_pkey">
+    <key id="77" parent="31" name="resource_pkey">
       <ObjectId>16563</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>resource_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="77" parent="32" name="id">
+    <column id="78" parent="32" name="id">
       <Position>1</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>730</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="78" parent="32" name="name">
+    <column id="79" parent="32" name="name">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>730</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="79" parent="32" name="duedate">
+    <column id="80" parent="32" name="duedate">
       <Position>3</Position>
       <DataType>date|0s</DataType>
       <StateNumber>730</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <column id="80" parent="32" name="info">
+    <column id="81" parent="32" name="info">
       <Position>4</Position>
       <DataType>text|0s</DataType>
       <StateNumber>730</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <index id="81" parent="32" name="task_pkey">
+    <index id="82" parent="32" name="task_pkey">
       <ObjectId>16592</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="82" parent="32" name="task_pkey">
+    <key id="83" parent="32" name="task_pkey">
       <ObjectId>16593</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>task_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <check id="83" parent="32" name="task_duedate_check">
+    <check id="84" parent="32" name="task_duedate_check">
       <ObjectId>16588</ObjectId>
       <ColNames>duedate</ColNames>
       <Predicate>duedate &gt;= CURRENT_DATE</Predicate>
     </check>
-    <column id="84" parent="33" name="resourceid">
+    <column id="85" parent="33" name="resourceid">
       <Position>1</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>733</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="85" parent="33" name="eventid">
+    <column id="86" parent="33" name="eventid">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>733</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="86" parent="33" name="uses_pkey">
+    <index id="87" parent="33" name="uses_pkey">
       <ObjectId>16619</ObjectId>
       <ColNames>resourceid
 eventid</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="87" parent="33" name="uses_pkey">
+    <key id="88" parent="33" name="uses_pkey">
       <ObjectId>16620</ObjectId>
       <ColNames>resourceid
 eventid</ColNames>
       <UnderlyingIndexName>uses_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="88" parent="33" name="uses_resourceid_fkey">
+    <foreign-key id="89" parent="33" name="uses_resourceid_fkey">
       <ObjectId>16621</ObjectId>
       <ColNames>resourceid</ColNames>
       <RefTableId>16556</RefTableId>
@@ -542,7 +548,7 @@ eventid</ColNames>
       <RefColNames>id</RefColNames>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="89" parent="33" name="uses_eventid_fkey">
+    <foreign-key id="90" parent="33" name="uses_eventid_fkey">
       <ObjectId>16626</ObjectId>
       <ColNames>eventid</ColNames>
       <RefTableId>16564</RefTableId>
