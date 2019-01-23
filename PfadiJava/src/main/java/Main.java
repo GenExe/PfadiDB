@@ -5,6 +5,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -50,10 +51,22 @@ public class Main {
                 case "my groups":
                     //todo: list groups for the user
                 case "all events":
-                    Session session = factory.openSession();
-                    Query query = session.createNativeQuery("SELECT * FROM event where name = ?1");
-                    query.setParameter(1, "Heimstunde");
-                    List list = query.list();
+                    List<Event> events = Events.allEvents();
+                    System.out.println(Enter corresponding number for event details, 0 to exit command);
+                    int i = 0;
+                    for (e: events) {
+                        i++;
+                        System.out.println(i + ": " + e.getName);
+                    }
+                    int in = scan.nextInt();
+                    while(in != 0) {
+                        if (in > 0 && in <= i) {
+                            Events.print(e);
+                        } else {
+                            System.out.println("no such Event");
+                        }
+                        in = scan.nextInt();
+                    }
 
                 case "all resources":
                     //todo: list all resources
