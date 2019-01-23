@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/PfadiDB.iml" filepath="$PROJECT_DIR$/.idea/PfadiDB.iml" />
       <module fileurl="file://$PROJECT_DIR$/PfadiJava/PfadiJava.iml" filepath="$PROJECT_DIR$/PfadiJava/PfadiJava.iml" />
-      <module fileurl="file://$PROJECT_DIR$/PfadiMaven/PfadiMaven.iml" filepath="$PROJECT_DIR$/PfadiMaven/PfadiMaven.iml" />
     </modules>
   </component>
 </project>
