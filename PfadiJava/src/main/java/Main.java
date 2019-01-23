@@ -1,11 +1,6 @@
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.query.Query;
-import org.hibernate.service.ServiceRegistry;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,17 +8,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Welcome to PfadiDB Ver. 0.1.5");
-        SessionFactory factory = null;
-        Configuration configuration = new Configuration();
-        configuration.configure("/hibernate.cfg.xml");
-        configuration.addAnnotatedClass(Event.class);
-        configuration.addAnnotatedClass(Group.class);
-        configuration.addAnnotatedClass(Invitation.class);
-        configuration.addAnnotatedClass(Leader.class);
-        configuration.addAnnotatedClass(Resource.class);
-        configuration.addAnnotatedClass(Task.class);
-        ServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-        factory = configuration.buildSessionFactory(registry);
+        SessionFactory factory = SessionFactoryHelper.getSessionFactory();
 //        System.out.println("Enter username");
 //        int check = Login.login(scan.nextLine());
 //        while (check != 0){
@@ -51,17 +36,19 @@ public class Main {
                 case "my groups":
                     //todo: list groups for the user
                 case "all events":
-                    List<Event> events = Events.allEvents();
-                    System.out.println(Enter corresponding number for event details, 0 to exit command);
+                    Session session = factory.openSession();
+                    List<Event> events = Events.allEvents(session
+                    );
+                    System.out.println("Enter corresponding number for event details, 0 to exit command");
                     int i = 0;
-                    for (e: events) {
+                    for (Event e: events) {
                         i++;
-                        System.out.println(i + ": " + e.getName);
+                        System.out.println(i + ": " + e.getName());
                     }
                     int in = scan.nextInt();
                     while(in != 0) {
                         if (in > 0 && in <= i) {
-                            Events.print(e);
+                            Events.print(events.get(in - 1));
                         } else {
                             System.out.println("no such Event");
                         }
@@ -86,7 +73,7 @@ public class Main {
                     running = false;
             }
         }
-        Login.logout();
+        // Login.logout();
         scan.close();
         System.out.println("Exit PfadiDB");
     }

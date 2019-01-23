@@ -10,8 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="PfadiJava" target="1.5" />
-      <module name="PfadiMaven" target="1.5" />
+      <module name="PfadiJava" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

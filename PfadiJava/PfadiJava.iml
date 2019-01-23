@@ -1,15 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_9">
+  <component name="FacetManager">
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map />
+        <naming-strategy-map />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="Hibernate 5.3.7-5.3.7" level="project" />
+    <orderEntry type="library" exported="" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library name="jboss:jboss-common-logging-jdk:2.0.4.GA" type="repository">
+        <properties maven-id="jboss:jboss-common-logging-jdk:2.0.4.GA" />
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/jboss/jboss-common-logging-jdk/2.0.4.GA/jboss-common-logging-jdk-2.0.4.GA.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/jboss/jboss-common-logging-spi/2.0.4.GA/jboss-common-logging-spi-2.0.4.GA.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/jboss/jboss-common-core/2.0.4.GA/jboss-common-core-2.0.4.GA.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/apache-xerces/xml-apis/2.7.1/xml-apis-2.7.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/apache-httpclient/commons-httpclient/2.0.2/commons-httpclient-2.0.2.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/oswego-concurrent/concurrent/1.3.4/concurrent-1.3.4.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/apache-slide/webdavlib/2.0/webdavlib-2.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MAVEN_REPOSITORY$/jboss/jboss-common-logging-jdk/2.0.4.GA/jboss-common-logging-jdk-2.0.4.GA-sources.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/jboss/jboss-common-logging-spi/2.0.4.GA/jboss-common-logging-spi-2.0.4.GA-sources.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/jboss/jboss-common-core/2.0.4.GA/jboss-common-core-2.0.4.GA-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Desktop/jboss-as-7.1.1.Final/jboss-modules.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="Maven: org.postgresql:postgresql:42.1.4" level="project" />
   </component>
 </module>
