@@ -6,47 +6,46 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class Events{
-
-    static List<Event> allEvents(Session session) {
+public class Groups {
+    static List<Group> allGroups(Session session){
         Transaction transaction = null;
-        List<Event> events = null;
+        List<Group> groups = null;
         try {
             transaction = session.beginTransaction();
-            Query query = session.createQuery("from Event");
-            events = query.list();
+            Query query = session.createQuery("from Group");
+            groups = query.list();
             transaction.commit();
         }catch(Exception e){
             if (transaction!= null) transaction.rollback();
         }finally{
             session.close();
-            return events;
+            return groups;
         }
     }
 
-    static List<Event> myEvents(Session session, String leader){
+    static List<Group> myGroups(Session session, String username){
         Transaction transaction = null;
-        List<Event> events = null;
+        List<Group> groups = null;
         try {
             transaction = session.beginTransaction();
-            Query query = session.createQuery("from Event event " +
-                                                    "inner join fetch event.invitationSet as invitations where invitations.leader = :code and invitations.response = 'TRUE'");
-            query.setParameter("code", leader);
-            events = query.list();
+            Query query = session.createQuery("from Group group " +
+                    "left outer join fetch  group.leaderSet leaderSet where leaderSet.name = :code");
+            query.setParameter("code", username);
+            groups = query.list();
             transaction.commit();
         }catch(Exception e){
             if (transaction!= null) transaction.rollback();
         }finally {
             session.close();
         }
-        return events;
+        return groups;
     }
 
-    static void print(Event e) {
+    static void print(Group e) {
         System.out.println("-----");
         System.out.println(e.getName());
-        System.out.println("von " + e.getStartdate() + " bis " + e.getEnddate());
-        System.out.println(e.getInfo());
+        System.out.println("ID: " + e.getId());
+        System.out.println("Membercoun: " + e.getMemberCount());
         System.out.println("-----");
     }
 }
