@@ -24,14 +24,14 @@ public class Tasks {
         return tasks;
     }
 
-    static List<Task> myTasks(Session session, String username){
+    static List<Task> myTasks(Session session, Leader user){
         Transaction transaction = null;
         List<Task> tasks = null;
         try {
             transaction = session.beginTransaction();
             Query query = session.createQuery("from Task task " +
                     "left outer join fetch  task.leaderSet leaderSet where leaderSet.name = :code");
-            query.setParameter("code", username);
+            query.setParameter("code", user.getName());
             tasks = query.list();
             transaction.commit();
         }catch(Exception e){

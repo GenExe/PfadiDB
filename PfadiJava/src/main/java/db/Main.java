@@ -35,62 +35,76 @@ public class Main {
                     session = factory.openSession();
                     List<Event> myEvents = Events.myEvents(session, Login.getUser());
                     ListEvents(scan, myEvents);
+                    break;
 
                 case "my tasks":
                     session = factory.openSession();
                     List<Task> myTasks = Tasks.myTasks(session, Login.getUser());
                     ListTasks(scan, myTasks);
+                    break;
 
                 case "my invitations":
                     session = factory.openSession();
                     List<Invitation> myInvitations = Invitations.myInvitations(session, Login.getUser());
                     ListInvitations(scan, myInvitations);
+                    break;
 
                 case "my groups":
                     session = factory.openSession();
                     List<Group> myGroups = Groups.myGroups(session, Login.getUser());
                     ListGroups(scan, myGroups);
+                    break;
 
                 case "all events":
                     session = factory.openSession();
                     List<Event> events = Events.allEvents(session);
                     ListEvents(scan, events);
+                    break;
 
                 case "all resources":
                     session = factory.openSession();
                     List<Resource> resources = Resources.allResources(session);
                     ListResources(scan, resources);
+                    break;
 
                 case "all leaders":
                     session = factory.openSession();
                     List<Leader> leaders = Leaders.allLeaders(session);
                     ListLeaders(scan, leaders);
+                    break;
 
                 case "all groups":
                     session = factory.openSession();
                     List<Group> groups = Groups.allGroups(session);
                     ListGroups(scan, groups);
+                    break;
 
                 case "new event":
                     //todo: event creation
+                    break;
 
                 case "new task":
                     //todo: task creation
+                    break;
 
                 case "new group":
                     //todo: group creation
+                    break;
 
                 case "exit":
                     running = false;
+                    break;
 
                 default:
-                    System.out.println(in + " is no valid input");
+                    System.out.println("no valid input");
                     scan.nextLine();
+                    break;
             }
         }
-        // Login.logout();
+        Login.logout();
         scan.close();
         System.out.println("Exit PfadiDB");
+        System.exit(0);
     }
 
     private static void ListEvents(Scanner scan, List<Event> events) {
@@ -101,7 +115,7 @@ public class Main {
             int i = 0;
             for (Event e: events) {
                 i++;
-                System.out.println(i + ": " + e.getName);
+                System.out.println(i + ": " + e.getName());
             }
             System.out.println("Enter corresponding number for event details");
             int in = scan.nextInt();
@@ -116,19 +130,19 @@ public class Main {
     }
 
     private static void ListLeaders(Scanner scan, List<Leader> leaders) {
-        if(leaedrs.isEmpty()) {
+        if(leaders.isEmpty()) {
             System.out.println("No leaders found");
         }
         else {
             int i = 0;
-            for (Event e: events) {
+            for (Leader e: leaders) {
                 i++;
-                System.out.println(i + ": " + e.getName);
+                System.out.println(i + ": " + e.getName());
             }
-            System.out.println("Enter corresponding number for event details");
+            System.out.println("Enter corresponding number for leader details");
             int in = scan.nextInt();
             if (in > 0 && in <= i) {
-                Leaders.print(leaedrs.get(in-1));
+                Leaders.print(leaders.get(in-1));
             } else {
                 System.out.println(in + " is no valid input");
                 scan.nextLine();
@@ -145,9 +159,9 @@ public class Main {
             int i = 0;
             for (Task e: tasks) {
                 i++;
-                System.out.println(i + ": " + e.getName);
+                System.out.println(i + ": " + e.getName());
             }
-            System.out.println("Enter corresponding number for event details");
+            System.out.println("Enter corresponding number for task details");
             int in = scan.nextInt();
             if (in > 0 && in <= i) {
                 Tasks.print(tasks.get(in-1));
@@ -167,9 +181,9 @@ public class Main {
             int i = 0;
             for (Group e: groups) {
                 i++;
-                System.out.println(i + ": " + e.getName);
+                System.out.println(i + ": " + e.getName());
             }
-            System.out.println("Enter corresponding number for event details");
+            System.out.println("Enter corresponding number for group details");
             int in = scan.nextInt();
             if (in > 0 && in <= i) {
                 Groups.print(groups.get(in-1));
@@ -189,9 +203,9 @@ public class Main {
             int i = 0;
             for (Resource e: resources) {
                 i++;
-                System.out.println(i + ": " + e.getName);
+                System.out.println(i + ": " + e.getName());
             }
-            System.out.println("Enter corresponding number for event details");
+            System.out.println("Enter corresponding number for resource details");
             int in = scan.nextInt();
             if (in > 0 && in <= i) {
                 Resources.print(resources.get(in-1));
@@ -211,9 +225,9 @@ public class Main {
             int i = 0;
             for (Invitation e: invitations) {
                 i++;
-                System.out.println(i + ": " + e.getName);
+                System.out.println(i + ": " + e.getEvent().getName());
             }
-            System.out.println("Enter corresponding number for event details");
+            System.out.println("Enter corresponding number for invitation details");
 
             int in = scan.nextInt();
             if (in > 0 && in > 0 && in <= i) {
@@ -223,16 +237,19 @@ public class Main {
                 switch(accept) {
                     case "yes":
                         //todo: update accepted = true
+                        break;
 
                     case "no":
                         //todo: update accepted = false
+                        break;
 
                     default:
-                        System.out.println(in + " is no valid input");
+                        System.out.println("no valid input");
                         scan.nextLine();
+                        break;
                 }
             } else {
-                System.out.println(in + " is no valid input");
+                System.out.println("no valid input");
                 scan.nextLine();
             }
         }

@@ -1,12 +1,16 @@
 package db;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @SequenceGenerator(name="id")
 @Table(name="groups")
-public class Group {
+@Proxy(lazy=false)
+public class Group implements Serializable {
     private String id;
     private String name;
     private int memberCount;

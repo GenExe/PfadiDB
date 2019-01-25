@@ -23,14 +23,14 @@ public class Groups {
         }
     }
 
-    static List<Group> myGroups(Session session, String username){
+    static List<Group> myGroups(Session session, Leader user){
         Transaction transaction = null;
         List<Group> groups = null;
         try {
             transaction = session.beginTransaction();
             Query query = session.createQuery("from Group group " +
-                    "left outer join fetch  group.leaderSet leaderSet where leaderSet.name = :code");
-            query.setParameter("code", username);
+                    "left outer join fetch group.leaderSet leaderSet where leaderSet.name = :code");
+            query.setParameter("code", "\""+user.getName()+"\"");
             groups = query.list();
             transaction.commit();
         }catch(Exception e){
@@ -45,7 +45,11 @@ public class Groups {
         System.out.println("-----");
         System.out.println(e.getName());
         System.out.println("ID: " + e.getId());
-        System.out.println("Membercoun: " + e.getMemberCount());
+        System.out.println("Membercount: " + e.getMemberCount());
+        System.out.println("Leader: ");
+        for(Leader l : e.getLeaderSet()) {
+            System.out.println(l.getName());
+        }
         System.out.println("-----");
     }
 }

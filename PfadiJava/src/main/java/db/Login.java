@@ -17,16 +17,14 @@ public class Login {
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            Query query = session.createQuery("from Leader where Leader.name = :code");
+            Query query = session.createQuery("from Leader leader where leader.name = :code");
             query.setParameter("code", username);
             current =(Leader) query.getSingleResult();
             transaction.commit();
+            return 0;
         }catch(Exception e){
             if (transaction!= null) transaction.rollback();
             return -1;
-        }finally {
-            session.close();
-            return 0;
         }
 
     }

@@ -24,14 +24,14 @@ public class Events{
         }
     }
 
-    static List<Event> myEvents(Session session, String leader){
+    static List<Event> myEvents(Session session, Leader user){
         Transaction transaction = null;
         List<Event> events = null;
         try {
             transaction = session.beginTransaction();
             Query query = session.createQuery("from Event event " +
-                                                    "inner join fetch event.invitationSet as invitations where invitations.leader = :code and invitations.response = 'TRUE'");
-            query.setParameter("code", leader);
+                                                    "inner join fetch event.invitationSet as invitations where invitations.leader = :code and invitations.response = 'true'");
+            query.setParameter("code", user);
             events = query.list();
             transaction.commit();
         }catch(Exception e){

@@ -1,12 +1,15 @@
 package db;
 
+import org.jboss.marshalling.serial.Serial;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @SequenceGenerator(name="id")
 @Table(name="resource")
-public class Resource {
+public class Resource implements Serializable {
     private String resId;
     private String name;
     private String info;

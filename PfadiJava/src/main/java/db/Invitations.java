@@ -24,13 +24,13 @@ public class Invitations {
         }
     }
 
-    static List<Invitation> myInvitations(Session session, String username){
+    static List<Invitation> myInvitations(Session session, Leader user){
         Transaction transaction = null;
         List<Invitation> invitations = null;
         try {
             transaction = session.beginTransaction();
             Query query = session.createQuery("from Invitation where Invitation.leader = :code");
-            query.setParameter("code", username);
+            query.setParameter("code", user.getName());
             invitations = query.list();
             transaction.commit();
         }catch(Exception e){

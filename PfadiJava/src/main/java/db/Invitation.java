@@ -1,14 +1,17 @@
 package db;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 
 @Entity
 @SequenceGenerator(name="id")
 @Table(name="invitation")
-public class Invitation {
+public class Invitation implements Serializable {
     private String invitationId;
-    private InvResponse response;
+//    @Enumerated(EnumType.STRING)
+//    @Column(name = "accepted")
+    private String response;
     private Event event;
     private Leader leader;
 
@@ -28,11 +31,11 @@ public class Invitation {
     }
 
     @Column(name = "accepted")
-    public InvResponse getResponse() {
+    public String getResponse() {
         return response;
     }
 
-    public void setResponse(InvResponse response) {
+    public void setResponse(String response) {
         this.response = response;
     }
 

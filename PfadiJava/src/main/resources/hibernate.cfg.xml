@@ -28,6 +28,7 @@
         <mapping class="db.Resource"/>
         <mapping class="db.Leader"/>
         <mapping class="db.Task"/>
+        <mapping class="db.InvResponse"/>
 
 
 
